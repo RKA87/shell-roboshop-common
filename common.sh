@@ -9,7 +9,7 @@ NO="\e[0m"
 LOG_FOLDER="/var/log/shell-roboshop-common"
 LOG_FILE="$LOG_FOLDER/$0.log"
 
-START_TIME=$(date "%s")
+START_TIME=$(date "+%s")
 
 mkdir -p $LOG_FOLDER #because we are passing LOG_FIL in starting itself
 
