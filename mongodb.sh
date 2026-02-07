@@ -3,8 +3,6 @@
 source ./common.sh
 app_name="mongod"
 
-SCRIPT_DIR=$(pwd)
-
 check_root_user
 
 #Copy mongod repo file to install mongodb

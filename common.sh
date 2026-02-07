@@ -5,6 +5,7 @@ RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
 NO="\e[0m"
+SCRIPT_DIR=$(pwd)
 
 LOG_FOLDER="/var/log/shell-roboshop-common"
 LOG_FILE="$LOG_FOLDER/$0.log"
