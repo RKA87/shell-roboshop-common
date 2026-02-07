@@ -6,7 +6,7 @@ app_name="mongod"
 check_root_user
 
 #Copy mongod repo file to install mongodb
-cp $SCRIPT_DIR/mongodb.repo /etc/yum.repos.d/mongodb.repo
+cp $SCRIPT_DIR/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>$LOG_FILE
 status_check $? "Copying MongoDB repo file"
 
 if dnf list installed mongodb-org -y &>>$LOG_FILE; then
