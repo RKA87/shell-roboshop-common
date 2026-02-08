@@ -118,5 +118,5 @@ systemctl_restart() {
     status_check $? "Restarting $app_name service"
 }
 
-TOTAL_TIME=$(($(date "+%s") - $START_TIME))
-echo -e "Script Completed at : $(date "+%Y-%m-%d %H:%M:%S") and Total Time taken: ${GREEN} $TOTAL_TIME:seconds${NO}" | tee -a $LOG_FILE
+# TOTAL_TIME=$(($(date "+%s") - $START_TIME))
+# echo -e "Script Completed at : $(date "+%Y-%m-%d %H:%M:%S") and Total Time taken: ${GREEN} $TOTAL_TIME:seconds${NO}" | tee -a $LOG_FILE
