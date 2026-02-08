@@ -2,7 +2,7 @@
 
 source ./common.sh
 app_name="catalogue"
-MONGODB_HOST="mongodb.rkak87.online"
+MONGODB_HOST="mongod.rkak87.online"
 
 check_root_user
 
