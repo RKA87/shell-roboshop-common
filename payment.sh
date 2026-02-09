@@ -16,5 +16,12 @@ fi
 
 python3_app_setup
 
+systemd_setup
 
+systemd_reload
 
+systemctl_enable
+
+systemctl_start
+
+systemctl_restart
