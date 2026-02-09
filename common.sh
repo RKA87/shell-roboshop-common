@@ -112,6 +112,32 @@ java_setup() {
     status_check $? "Moving and Renaming the generated jar file"
 }
 
+python3_app_setup(){
+    mkdir -p /app &>>$LOG_FILE
+    status_check $? "Creating application directory"
+
+    cd /app &>>$LOG_FILE
+    status_check $? "Changing to application directory"
+
+    #download the application code and install dependencies
+    curl -L -o /tmp/$app_name.zip https://roboshop-artifacts.s3.amazonaws.com/$app_name-v3.zip &>>$LOG_FILE
+    status_check $? "Downloading $app_name code"
+
+    cd /app &>>$LOG_FILE
+    echo -e "${YELLOW} redirect to /app application directory ${NO}"
+
+    rm -rf /app/* &>>$LOG_FILE
+    status_check $? "Removing the existing application code"
+
+    unzip /tmp/$app_name.zip
+    status_check $? "${YELLOW} Extracting application code ${NO}"
+
+    echo -e "${YELLOW} Installing dependencies ${NO}"
+    cd /app &>>$LOG_FILE
+    pip3 install -r requirements.txt &>>$LOG_FILE
+    status_check $? "Installing $app_name dependencies"
+}
+
 #Create applicatio directory install dependencies and build application
 application_setup(){
     mkdir -p /app &>>$LOG_FILE
