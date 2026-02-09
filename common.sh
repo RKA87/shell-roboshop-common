@@ -76,6 +76,42 @@ nodejs_setup(){
     fi
 }
 
+java_app_setup(){
+    mkdir -p /app &>>$LOG_FILE
+    status_check $? "Creating application directory"
+
+    cd /app &>>$LOG_FILE
+    status_check $? "Changing to application directory"
+
+    #download the application code and install dependencies
+    curl -L -o /tmp/$app_name.zip https://roboshop-artifacts.s3.amazonaws.com/$app_name-v3.zip &>>$LOG_FILE
+    status_check $? "Downloading $app_name code"
+
+    cd /app &>>$LOG_FILE
+    echo -e "${YELLOW} redirect to /app application directory ${NO}"
+
+    rm -rf /app/* &>>$LOG_FILE
+    status_check $? "Removing the existing application code"
+
+    unzip /tmp/$app_name.zip
+    status_check $? "${YELLOW} Extracting application code ${NO}"
+}
+
+#Java Setup
+java_setup() {
+    dnf install maven -y &>>$LOG_FILE
+    status_check $? "Installing maven"
+
+    cd /app &>>$LOG_FILE
+    echo -e "${YELLOW} redirect to /app application directory ${NO}"
+
+    mvn clean package &>>$LOG_FILE
+    status_check $? "Building Java application $app_name"
+
+    mv target/$app_name-1.0.jar $app_name.jar &>>$LOG_FILE
+    status_check $? "Moving and Renaming the generated jar file"
+}
+
 #Create applicatio directory install dependencies and build application
 application_setup(){
     mkdir -p /app &>>$LOG_FILE
