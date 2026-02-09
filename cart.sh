@@ -3,7 +3,7 @@
 source ./common.sh
 app_name="cart"
 
-chek_root_user
+check_root_user
 
 nodejs_setup
 
