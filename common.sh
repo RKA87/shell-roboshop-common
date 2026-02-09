@@ -48,6 +48,19 @@ useradd_creation() {
     fi
 }
 
+#nginx installation
+nginx_setup() {
+    dnf module disable nginx -y &>>$LOG_FILE
+    dnf module enable nginx:1.24 -y &>>$LOG_FILE
+    status_check $? "Enabling nginx 1.24 module"
+    if dnf list installed nginx -y &>>$LOG_FILE; then
+        echo -e "${YELLOW} nginx is already installed, skipping installation${NO}"
+    else
+        dnf install nginx -y &>>$LOG_FILE
+        status_check $? "Installing nginx"
+    fi
+}
+
 #NodeJS Installation
 nodejs_setup(){
     dnf module disable nodejs -y &>>$LOG_FILE
