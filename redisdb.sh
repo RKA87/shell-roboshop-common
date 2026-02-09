@@ -9,8 +9,8 @@ check_root_user
 dnf module disable redis -y &>>$LOG_FILE
 status_check $? "Disabling Redis module"
 
-dnf module enable redis:7.0 -y &>>$LOG_FILE
-status_check $? "Enabling Redis 7.0 module"
+dnf module enable redis:7 -y &>>$LOG_FILE
+status_check $? "Enabling Redis 7 module"
 
 dnf install redis -y &>>$LOG_FILE
 status_check $? "Installing Redis"
