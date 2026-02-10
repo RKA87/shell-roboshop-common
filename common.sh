@@ -108,7 +108,7 @@ java_setup() {
     mvn clean package &>>$LOG_FILE
     status_check $? "Building Java application $app_name"
 
-    mv target/$app_name-1.0.jar $app_name.jar &>>$LOG_FILE
+    mv target/$app_name-1.0.jar.original $app_name.jar &>>$LOG_FILE
     status_check $? "Moving and Renaming the generated jar file"
 }
 
